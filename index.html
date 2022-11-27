@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Ref</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main id="app">
+        <div class="container">
+            <div class="wrapper" v-model="box">
+                <h1 class="hidden">Mail Reference for API Processing</h1>
+                <h2>Contact Me</h2>
+                <figure class="contactjpg" style="width:340; height: 540;">
+                    <img class="contactimg" src="images/contactme.jpg" alt="contactjpg" width="600px">
+                    <p class="brief">
+                        Contact Me and I will try my best to get back with you within a week of time
+                    </p>
+                    <h2 class="mail-header">Fill Out the Details Below.</h2>
+                    <form action="send.php" method="POST" id="mail-form" class="contactpage">
+                        <ul>
+                            <div class="maincontent">
+                                <div class="content">
+                                    <li>
+                                        <label for="firstname">First Name</label>
+                                        <div class="errorinput" v-if=" errorFirstname">
+                                            <p>There is a error here, Kindly Recheck.</p>
+                                        </div>
+                                        <input class="input" v-model="form.firstname" ref="fname" type="text" id="firstname" name="firstname" required="required">
+                                    </li>
+                                    <li>
+                                        <label for="lastname">Last Name</label>
+                                        <div class="errorinput" v-if="errorLastname">
+                                            <p>There is a error here, Kindly Recheck.</p>
+                                        </div>
+                                        <input class="input" v-model="form.lastname" ref="lname" type="text" id="lastname" name="lastname" required="required">
+                                    </li>
+                                    <li>
+                                        <label for="email">Email</label>
+                                        <div class="errorinput" v-if="errormail">
+                                            <p>There is a error here, Kindly Recheck.</p>
+                                        </div>
+                                        <input class="input" v-model="form.email" ref="email" type="email" id="email" name="email" required="required">
+                                    </li>
+                                </div>
+                                <div class="content2">
+                                    <li>
+                                        <label for="message">Message</label>
+                                        <div class="errorinput" v-if="errorinput">
+                                            <p>There is a error here, Kindly Recheck.</p>
+                                        </div>
+
+                                        <textarea class="input" v-model="form.text" ref="message" name="message" id="message"></textarea>
+                                    </li>
+                                </div>
+                            </div>
+                            <li>
+
+                                <!-- send button-->
+                                <button @click.prevent="processMail" type="submit" class="button" value="Send Mail">Send Mail</button>
+                            </li>
+                            <div class="onsuccess" v-if="successmsg">
+                                <p class="sent">Thankyou for Sending Us....</p>
+                            </div>
+            </div>
+            </ul>
+            </form>
+        </div>
+        </div>
+    </main>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/main.js" type="module" defer></script>
+</body>
+
+</html>
